@@ -7,29 +7,29 @@ Introducción a Vue
 ## Contenidos
 
 - Intro
-  1. [Requisitos](#requisitos)
-  2. [Presentación](#intro)
-  3. [Setup de entorno](#setup)
+  * [Requisitos](#requisitos)
+  * [Presentación](#intro)
+  * [Setup de entorno](#setup)
 - Features de Vue
-  4. [Hello World (render de variables)](#helloworld)
-  5. [Conditional rendering (v-if)](#conditional-rendering)
-  6. [List rendering](#list-renderig)
-  7. [Events](#events)
-  8. [Props dinámicas en elementos](#props)
-  9. [Classes / Styles](#classes-y-styles)
-  10. [v-model](#v-model)
-  11. [Methods](#methods)
-  12. [Ciclo de vida](#ciclo-de-vida)
+  * [Hello World (render de variables)](#helloworld)
+  * [Conditional rendering (v-if)](#conditional-rendering)
+  * [List rendering](#list-renderig)
+  * [Events](#events)
+  * [Props dinámicas en elementos](#props)
+  * [Classes / Styles](#classes-y-styles)
+  * [v-model](#v-model)
+  * [Methods](#methods)
+  * [Ciclo de vida](#ciclo-de-vida)
 - Arquitectura de componentes
-  13. [Componentes](#components)
-  14. [Props de componentes](#props-de-componentes)
-  15. [Comunicación entre componentes](#comunicacion)
+  * [Componentes](#components)
+  * [Props de componentes](#props-de-componentes)
+  * [Comunicación entre componentes](#comunicacion)
 - Aplicando todo
-  16. [Ejemplo utilizando lo visto](#ejemplo-completo)
+  * [Ejemplo utilizando lo visto](#ejemplo-completo)
 - Otros
-  17. [Webpack](#webpack)
-  18. [Trucos](#trucos)
-  19. [Para seguir aprendiendo](#mas)
+  * [Webpack](#webpack)
+  * [Trucos](#trucos)
+  * [Para seguir aprendiendo](#mas)
 
 ------
 
