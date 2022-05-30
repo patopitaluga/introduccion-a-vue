@@ -1,0 +1,17 @@
+<!-- Ejemplo 1: Hello World Vue -->
+<div id="contenedor-de-mi-app">
+  {{ miVariable }}
+</div>
+
+<script src="https://unpkg.com/vue@3"></script>
+<script>
+  const miApp = Vue.createApp({
+    data: function() {
+      return {
+        miVariable: 'Hola ' + (5 + 5)
+      };
+    },
+  });
+
+  miApp.mount('#contenedor-de-mi-app');
+</script>

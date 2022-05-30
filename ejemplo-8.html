@@ -1,0 +1,21 @@
+<!-- Ejemplo 8: v-model -->
+<div id="contenedor-de-mi-app">
+  {{ miVariable }}
+
+  <input type="text" v-model="miVariable" />
+
+  <button @click="miVariable = 'Buen día'">Cambiar</button>
+</div>
+
+<script src="https://unpkg.com/vue@3"></script>
+<script>
+  const miApp = Vue.createApp({
+    data: function() {
+      return {
+        miVariable: 'Hola'
+      };
+    },
+  });
+
+  miApp.mount('#contenedor-de-mi-app');
+</script>

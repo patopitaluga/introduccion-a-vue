@@ -1,0 +1,26 @@
+<!-- Ejemplo 3: List rendering -->
+<div id="contenedor-de-mi-app">
+  <ul v-for="cadaElemento in miLista">
+    <li>{{ cadaElemento.name }}</li>
+  <ul>
+</div>
+
+<script src="https://unpkg.com/vue@3"></script>
+<script>
+  const miApp = Vue.createApp({
+    data: function() {
+      return {
+        miLista: [
+          {
+            name: 'Primer elemento'
+          },
+          {
+            name: 'Segundo elemento'
+          }
+        ],
+      };
+    },
+  });
+
+  miApp.mount('#contenedor-de-mi-app');
+</script>

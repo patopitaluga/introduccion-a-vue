@@ -1,0 +1,19 @@
+<!-- Ejemplo 6: Style dinámica -->
+<div id="contenedor-de-mi-app">
+  <input :style="{ 'border-color': colorBorde }"/>
+
+  <button @click="colorBorde = 'red'">Tocá</button>
+</div>
+
+<script src="https://unpkg.com/vue@3"></script>
+<script>
+  const miApp = Vue.createApp({
+    data: function() {
+      return {
+        colorBorde: 'blue'
+      };
+    },
+  });
+
+  miApp.mount('#contenedor-de-mi-app');
+</script>

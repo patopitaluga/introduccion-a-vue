@@ -1,0 +1,19 @@
+<!-- Ejemplo 4: Escuchando eventos -->
+<div id="contenedor-de-mi-app">
+  <div>{{ seClickeo }}</div>
+
+  <button @click="seClickeo = 'sí'">Tocá</button>
+</div>
+
+<script src="https://unpkg.com/vue@3"></script>
+<script>
+  const miApp = Vue.createApp({
+    data: function() {
+      return {
+        seClickeo: 'no'
+      };
+    },
+  });
+
+  miApp.mount('#contenedor-de-mi-app');
+</script>

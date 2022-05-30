@@ -1,0 +1,20 @@
+<!-- Ejemplo 2: Conditional rendering (v-if) -->
+<div id="contenedor-de-mi-app">
+  <ul v-if="listaVisible">
+    <li>Elemento 1</li>
+    <li>Elemento 2</li>
+  </ul>
+</div>
+
+<script src="https://unpkg.com/vue@3"></script>
+<script>
+  const miApp = Vue.createApp({
+    data: function() {
+      return {
+        listaVisible: true
+      };
+    },
+  });
+
+  miApp.mount('#contenedor-de-mi-app');
+</script>

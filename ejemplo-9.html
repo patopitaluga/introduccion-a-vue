@@ -1,0 +1,20 @@
+<!-- Ejemplo 9: Methods -->
+<div id="contenedor-de-mi-app">
+  <form @submit.prevent="miMetodoDeSubmit">
+    <input type="text">
+    <button type="submit">Enviar</button>
+  </form>
+</div>
+
+<script src="https://unpkg.com/vue@3"></script>
+<script>
+  const miApp = Vue.createApp({
+    methods: {
+      miMetodoDeSubmit: function() {
+        alert('Se ha ejecutado')
+      },
+    },
+  });
+
+  miApp.mount('#contenedor-de-mi-app');
+</script>

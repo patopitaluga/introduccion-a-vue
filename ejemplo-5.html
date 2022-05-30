@@ -1,0 +1,19 @@
+<!-- Ejemplo 5: Props dinámicas -->
+<div id="contenedor-de-mi-app">
+  <input :disabled="estaDeshabilitado"/>
+
+  <button @click="estaDeshabilitado = true">Tocá</button>
+</div>
+
+<script src="https://unpkg.com/vue@3"></script>
+<script>
+  const miApp = Vue.createApp({
+    data: function() {
+      return {
+        estaDeshabilitado: false
+      };
+    },
+  });
+
+  miApp.mount('#contenedor-de-mi-app');
+</script>

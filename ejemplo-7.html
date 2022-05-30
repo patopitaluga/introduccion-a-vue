@@ -1,0 +1,27 @@
+<!-- Ejemplo 7: Class dinámica -->
+<style>
+  .mi-input {
+    border: 1px blue solid;
+  }
+  .mi-input.mi-input-destacado {
+    border: 1px red solid;
+  }
+</style>
+<div id="contenedor-de-mi-app">
+  <input class="mi-input" :class="{ 'mi-input-destacado': miInputDestacado }"/>
+
+  <button @click="miInputDestacado = true">Tocá</button>
+</div>
+
+<script src="https://unpkg.com/vue@3"></script>
+<script>
+  const miApp = Vue.createApp({
+    data: function() {
+      return {
+        miInputDestacado: false
+      };
+    },
+  });
+
+  miApp.mount('#contenedor-de-mi-app');
+</script>
