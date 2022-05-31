@@ -96,7 +96,7 @@ Todos los ejemplos que veremos aquí funcionan tanto usandolos directamente con 
 
 ## <a name="helloworld"></a> Hello World (render de variables)
 
-```
+```html
 <div id="contenedor-de-mi-app">
   {{ miVariable }}
 </div>
