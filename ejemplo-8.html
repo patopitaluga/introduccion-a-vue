@@ -9,13 +9,12 @@
 
 <script src="https://unpkg.com/vue@3"></script>
 <script>
-  const miApp = Vue.createApp({
+  Vue.createApp({
     data: function() {
       return {
         miVariable: 'Hola'
       };
     },
-  });
-
-  miApp.mount('#contenedor-de-mi-app');
+  })
+    .mount('#contenedor-de-mi-app');
 </script>

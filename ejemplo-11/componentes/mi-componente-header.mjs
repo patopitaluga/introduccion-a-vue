@@ -1,9 +1,9 @@
 const miComponenteHeader = {
   template: `
-  <div>
-    Hello world {{ miVariable }}
-  </div>
-`
+  <header>
+    Este es el header {{ miVariable }}
+  </header>
+`,
   data: function() {
     return {
       miVariable: 'hola',

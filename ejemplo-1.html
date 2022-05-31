@@ -3,15 +3,14 @@
   {{ miVariable }}
 </div>
 
-<script src="https://unpkg.com/vue@3"></script>
+<script src="https://unpkg.com/vue@3.2.36/dist/vue.global.prod.js"></script>
 <script>
-  const miApp = Vue.createApp({
+  Vue.createApp({
     data: function() {
       return {
         miVariable: 'Hola ' + (5 + 5)
       };
     },
-  });
-
-  miApp.mount('#contenedor-de-mi-app');
+  })
+    .mount('#contenedor-de-mi-app');
 </script>
