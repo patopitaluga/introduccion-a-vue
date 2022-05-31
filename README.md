@@ -15,14 +15,13 @@ Introducción a Vue
   * [Conditional rendering (v-if)](#conditional-rendering)
   * [List rendering](#list-renderig)
   * [Attributes dinámicos](#attributes)
-  * [Props dinámicas en elementos](#props)
   * [Classes / Styles](#classes-y-styles)
   * [v-model](#v-model)
   * [Methods](#methods)
   * [Ciclo de vida](#ciclo-de-vida)
 - Arquitectura de componentes
   * [Componentes](#components)
-  * [Props de componentes](#props-de-componentes)
+  * [Definir props](#definir-props)
   * [Comunicación entre componentes](#comunicacion)
 - Aplicando todo
   * [Ejemplo utilizando lo visto](#ejemplo-completo)
@@ -57,8 +56,6 @@ Se pronuncia /vjuː/, como *view* (viú)
 Si React se parece a usar javascript con html adentro, Vue se parece a usar html con javascript adentro.
 
 ------
-
-https://vuejs.org/guide/introduction.html
 
 ## ¿Por qué Vue y no React/Svelte/jQuery/Vanilla Js?
 
@@ -118,11 +115,14 @@ Esto lo pueden copiar y pegar en un archivo index.html y verlo en un browser y f
 
 Vivo: https://patopitaluga.github.io/introduccion-a-vue/ejemplo-1.html
 
-¿Qué está haciendo?
+**¿Qué está haciendo?**
 - Crea un elemento de html &lt;div&gt; con el id "contenedor-de-mi-app". Este id puede ser cualquiera, solo se usa para que Vue pueda identificar dónde vivirá la app Vue.
-- Usando las llaves {{ }} indica donde se mostrará el valor de la variable miVariable. Este nombre lo he inventado para el ejemplo.
-- Carga Vue de un cdn unpkg según indica la documentación oficial de Vue. Esto declarará un objeto que se llama Vue que contiene todas las propiedades y métodos.
-- Usa el método createApp de Vue y se lo asigna a una variable. El nombre miApp lo he inventado para este ejemplo. createApp recibe un único parámetro que es un objeto.
+- unpkg es un cdn para librerías de npmjs. Es el cdn recomendado por la documentación oficial de Vue. Al ponerle @3 va a revisar cuál es la última que tiene de la versión 3 y va a redireccionar a la url de la versión específica. Para hacer más rápido el download se puede especificar esa versión directamente. Si se pone la .prod.js viene minificado y pesa menos, pero no se puede debugear con el plugin para Chrome. Para producción se recomienda la minificada.
+- ¿Dónde poner ese tag script? Estratégicamente considerando que es render blocking. Si nos sirve que detenga el rendering hasta que se ejecute todo Vue, usarlo allí. Ante la duda: antes de cerrar el body o con **defer**.
+- El tag script puede contener la propiedad integrity con un hash, con eso si se sospecha que alguien pudo haber ingresado scripts maliciosos en el cdn y no coincidirá el hash y el browser no lo va a ejecutar
+- Vue declarará un objeto que se llama Vue.
+- Usando las llaves {{ }} indica donde se mostrará el valor de la variable miVariable. El nombre miVariable (y todos los que estén en español en esta charla) lo inventé yo para el ejemplo. No es obligatorio que el caracter de render sea la doble llave. Si se va a usar junto con algún sistema de template (Mustache por ej.) y coincide que también usa la doble llave, se puede setear Vue para que use otros caracteres.
+- Usa el método createApp que es una función recibe un único parámetro que es un objeto.
 - La propiedad "data" del objeto que es parámetro de createApp contendrá una función que devuelve un objeto con las variables reactivas y su valor inicial.
 - Usa la función mount de la app declarada para indicar en qué elemento contenedor funcionará la app de Vue.
 
@@ -152,6 +152,8 @@ Vivo: https://patopitaluga.github.io/introduccion-a-vue/ejemplo-1.html
 ```
 
 Vivo: https://patopitaluga.github.io/introduccion-a-vue/ejemplo-2.html
+
+Dentro del v-if se ejecuta una condición, puede ser una variable, una comparación o una función.
 
 ------
 
@@ -481,7 +483,7 @@ Vivo: https://patopitaluga.github.io/introduccion-a-vue/ejemplo-11/index.html
 
 ------
 
-## <a name="props-de-componentes"></a> Props de componentes
+## <a name="definir-props"></a> Definir props
 
 Se declaran en el objeto que es parámetro de **createApp**
 
