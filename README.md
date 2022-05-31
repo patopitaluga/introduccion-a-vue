@@ -75,7 +75,7 @@ En definitiva: la performance es tan buena o mejor que React (fuente?) el ingres
 
 Así lo van a encontrar en la documentación oficial de Vue:
 
-```
+```html
 <script src="https://unpkg.com/vue@3"></script>
 ```
 
@@ -130,7 +130,7 @@ Vivo: https://patopitaluga.github.io/introduccion-a-vue/ejemplo-1.html
 
 ## <a name="conditional-rendering"></a> Conditional rendering (v-if)
 
-```
+```html
 <div id="contenedor-de-mi-app">
   <ul v-if="listaVisible">
     <li>Elemento 1</li>
@@ -157,7 +157,7 @@ Vivo: https://patopitaluga.github.io/introduccion-a-vue/ejemplo-2.html
 
 ## <a name="list-renderig"></a> List Rendering / Cómo hacer loops de array
 
-```
+```html
 <div id="contenedor-de-mi-app">
   <ul v-for="cadaElemento in miLista">
     <li>{{ cadaElemento.name }}</li>
@@ -194,7 +194,7 @@ El equivalente en vanilla a .on...
 
 Se hacen poniendo un @ delante del envento. Tengan en cuenta que dentro de los "" del listener del evento se está ejecutando javascript, así que se pueden leer/escribir variables o correr funciones.
 
-```
+```html
 <div id="contenedor-de-mi-app">
   <div>{{ seClickeo }}</div>
 
@@ -222,7 +222,7 @@ Vivo: https://patopitaluga.github.io/introduccion-a-vue/ejemplo-4.html
 
 Dentro de las "" de cualquier prop de un elemento html o componente vue se puede correr javascript. Generalmente se usa para usar variables reactivas de data. En este ejemplo lo uso para setear la propiedad disabled de un &lt;input&gt;
 
-```
+```html
 <div id="contenedor-de-mi-app">
   <input :disabled="estaDeshabilitado"/>
 
@@ -252,7 +252,7 @@ Vivo: https://patopitaluga.github.io/introduccion-a-vue/ejemplo-5.html
 
 Cuando la propiedad **style** de un elemento se escribe con : el contenido debe ser un objeto con el nombre de las propiedades de css como string como key. Aquí el ejemplo atando el border-color de un &lt;input&gt; a una variable reactiva.
 
-```
+```html
 <div id="contenedor-de-mi-app">
   <input :style="{ 'border-color': colorBorde }"/>
 
@@ -280,7 +280,7 @@ Si el elemento tiene la propiedad style con y sin :, primero considerará las pr
 
 ### Class
 
-```
+```html
 <style>
   .mi-input {
     border: 1px blue solid;
@@ -316,7 +316,7 @@ Vivo: https://patopitaluga.github.io/introduccion-a-vue/ejemplo-7.html
 
 v-model es una manera corta de especificar que una variable se insertará siempre como propiedad y al mismo tiempo se actualizará con un event si cambia dentro del componente. Se suele usar con los elementos de html interactivos pero se puede usar en un componente Vue creado por nosotros.
 
-```
+```html
 <div id="contenedor-de-mi-app">
   {{ miVariable }}
 
@@ -345,19 +345,19 @@ Vivo: https://patopitaluga.github.io/introduccion-a-vue/ejemplo-8.html
 ## <a name="methods"></a> Methods
 
 Vimos que Vue puede escuchar el evento @click que emite un &lt;button&gt; por ejemplo:
-```
+```html
 <button @click="miVariable++">Aquí</button>
 ```
 
 Si una función es más compleja en vez de hacerla inline se puede declarar un method. Por ejemplo:
 
-```
+```html
 <button @click="miMetodo">Aquí</button>
 ```
 
 o
 
-```
+```html
 <form @submit.prevent="miMetodoDeSubmit">
   <input type="text">
   <button type="submit">Enviar</button>
@@ -368,7 +368,7 @@ El .prevent aplica automáticamente preventDefault, en este caso detiene el subm
 
 Para definirlo se declara en el objeto que es parámetro de **createApp**
 
-```
+```javascript
 Vue.createApp({
   methods: {
     miMetodo: function() {
@@ -390,7 +390,7 @@ Pueden investigar otros en la documentación de Vue.
 
 **mounted** es una función que se declara en el objeto que es parámetro de **createApp**
 
-```
+```javascript
 Vue.createApp({
   data: function() {
     return {
@@ -425,7 +425,7 @@ Por eso estoy usando un string como template. Si se hace el bundle con webpack s
 
 En index.html
 
-```
+```html
 <div id="contenedor-de-mi-app">
   <micomponenteheader>
   </micomponenteheader>
@@ -440,7 +440,7 @@ En index.html
 
 En **mi-app.js**:
 
-```
+```javascript
 import { miComponenteHeader } from './componentes/mi-componente-header.mjs';
 
 Vue.createApp({
@@ -458,7 +458,7 @@ Vue.createApp({
 
 En **componentes/mi-componente-header.mjs**
 
-```
+```javascript
 const miComponenteHeader = {
   template: `
   <div>
@@ -485,13 +485,20 @@ Vivo: https://patopitaluga.github.io/introduccion-a-vue/ejemplo-11/index.html
 
 Se declaran en el objeto que es parámetro de **createApp**
 
-```
+```javascript
+const miComponente = {
+  template: `
+  <div>
+    Hello world {{ miProp }}
+  </div>
+`
   props: {
     miProp: {
       type: Number,
-      required: true,
-    },
-  },
+      required: true
+    }
+  }
+};
 ```
 
 Allí se declaran en camel case pero al definir el argumento en el html se hará con kebab-case. Ejemplo:
@@ -527,7 +534,7 @@ Una webapp con un sidebar desplegable. Si la pantalla es pequeña, el sidebar se
 
 Archivo webpack.config.js
 
-```
+```javascript
 require('dotenv').config();
 const webpack = require('webpack');
 
@@ -606,7 +613,6 @@ module.exports = {
     }),
   ],
 };
-
 ```
 
 ------
@@ -616,7 +622,7 @@ module.exports = {
 Ya que el html se puede renderear antes de que Vue termine cargar, aunque sea unos milisegundos, pueden mostrarse al usuario los {{  }} con el nombre de la variable. Para evitar eso Vue quitará la propiedad v-cloak al terminar de cargar, esa propiedad se puede usar para ocultar los elementos que muestran contenido reactivo.
 
 En el head
-```
+```html
 <style>
 [v-cloak] {
   display: none !important
@@ -625,7 +631,7 @@ En el head
 </style>
 ```
 En el elemento o componente que se quiere ocultar
-```
+```html
 <div v-cloak>
   {{ theContentFlashing }}
 </div>
