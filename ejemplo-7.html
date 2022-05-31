@@ -15,13 +15,12 @@
 
 <script src="https://unpkg.com/vue@3"></script>
 <script>
-  const miApp = Vue.createApp({
+  Vue.createApp({
     data: function() {
       return {
         miInputDestacado: false
       };
     },
-  });
-
-  miApp.mount('#contenedor-de-mi-app');
+  })
+    .mount('#contenedor-de-mi-app');
 </script>

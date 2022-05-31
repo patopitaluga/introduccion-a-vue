@@ -103,15 +103,14 @@ Todos los ejemplos que veremos aquí funcionan tanto usandolos directamente con 
 
 <script src="https://unpkg.com/vue@3"></script>
 <script>
-  const miApp = Vue.createApp({
+  Vue.createApp({
     data: function() {
       return {
         miVariable: 'Hola ' + (5 + 5)
       };
     },
-  });
-
-  miApp.mount('#contenedor-de-mi-app');
+  })
+    .mount('#contenedor-de-mi-app');
 </script>
 ```
 
@@ -141,15 +140,14 @@ Vivo: https://patopitaluga.github.io/introduccion-a-vue/ejemplo-1.html
 
 <script src="https://unpkg.com/vue@3"></script>
 <script>
-  const miApp = Vue.createApp({
+  Vue.createApp({
     data: function() {
       return {
         listaVisible: true
       };
     },
-  });
-
-  miApp.mount('#contenedor-de-mi-app');
+  })
+    .mount('#contenedor-de-mi-app');
 </script>
 ```
 
@@ -168,7 +166,7 @@ Vivo: https://patopitaluga.github.io/introduccion-a-vue/ejemplo-2.html
 
 <script src="https://unpkg.com/vue@3"></script>
 <script>
-  const miApp = Vue.createApp({
+  Vue.createApp({
     data: function() {
       return {
         miLista: [
@@ -181,9 +179,8 @@ Vivo: https://patopitaluga.github.io/introduccion-a-vue/ejemplo-2.html
         ],
       };
     },
-  });
-
-  miApp.mount('#contenedor-de-mi-app');
+  })
+    .mount('#contenedor-de-mi-app');
 </script>
 ```
 
@@ -206,15 +203,14 @@ Se hacen poniendo un @ delante del envento. Tengan en cuenta que dentro de los "
 
 <script src="https://unpkg.com/vue@3"></script>
 <script>
-  const miApp = Vue.createApp({
+  Vue.createApp({
     data: function() {
       return {
         seClickeo: 'no'
       };
     },
-  });
-
-  miApp.mount('#contenedor-de-mi-app');
+  })
+    .mount('#contenedor-de-mi-app');
 </script>
 ```
 
@@ -235,15 +231,14 @@ Dentro de las "" de cualquier prop de un elemento html o componente vue se puede
 
 <script src="https://unpkg.com/vue@3"></script>
 <script>
-  const miApp = Vue.createApp({
+  Vue.createApp({
     data: function() {
       return {
         estaDeshabilitado: false
       };
     },
-  });
-
-  miApp.mount('#contenedor-de-mi-app');
+  })
+    .mount('#contenedor-de-mi-app');
 </script>
 ```
 
@@ -266,15 +261,14 @@ Cuando la propiedad **style** de un elemento se escribe con : el contenido debe 
 
 <script src="https://unpkg.com/vue@3"></script>
 <script>
-  const miApp = Vue.createApp({
+  Vue.createApp({
     data: function() {
       return {
         colorBorde: 'blue'
       };
     },
-  });
-
-  miApp.mount('#contenedor-de-mi-app');
+  })
+    .mount('#contenedor-de-mi-app');
 </script>
 ```
 
@@ -303,15 +297,14 @@ Si el elemento tiene la propiedad style con y sin :, primero considerará las pr
 
 <script src="https://unpkg.com/vue@3"></script>
 <script>
-  const miApp = Vue.createApp({
+  Vue.createApp({
     data: function() {
       return {
         miInputDestacado: false
       };
     },
-  });
-
-  miApp.mount('#contenedor-de-mi-app');
+  })
+    .mount('#contenedor-de-mi-app');
 </script>
 ```
 
@@ -334,15 +327,14 @@ v-model es una manera corta de especificar que una variable se insertará siempr
 
 <script src="https://unpkg.com/vue@3"></script>
 <script>
-  const miApp = Vue.createApp({
+  Vue.createApp({
     data: function() {
       return {
         miVariable: 'Hola'
       };
     },
-  });
-
-  miApp.mount('#contenedor-de-mi-app');
+  })
+    .mount('#contenedor-de-mi-app');
 </script>
 ```
 
@@ -377,7 +369,7 @@ El .prevent aplica automáticamente preventDefault, en este caso detiene el subm
 Para definirlo se declara en el objeto que es parámetro de **createApp**
 
 ```
-const miApp = Vue.createApp({
+Vue.createApp({
   methods: {
     miMetodo: function() {
       alert('Se ha ejecutado')
@@ -399,7 +391,7 @@ Pueden investigar otros en la documentación de Vue.
 **mounted** es una función que se declara en el objeto que es parámetro de **createApp**
 
 ```
-const miApp = Vue.createApp({
+Vue.createApp({
   data: function() {
     return {
       miVariable: {
@@ -413,9 +405,8 @@ const miApp = Vue.createApp({
         this.valor1 = res.json()
       });
   },
-});
-
-miApp.mount('#contenedor-de-mi-app');
+})
+    .mount('#contenedor-de-mi-app');
 ```
 
 Es práctico usar **function** allí y no **() =>** para disponer de todo Vue y de todo el componente con **this**.
@@ -425,6 +416,8 @@ Vivo: https://patopitaluga.github.io/introduccion-a-vue/ejemplo-10.html
 ------
 
 ## <a name="components"></a> Crear un componente
+
+La mayoría de las veces, cuando se habla de una *aplicación de Vue* o de un *componente de Vue*, se habla de la misma cosa.
 
 Si se va a usar sin bundler, con módulos nativos de javascript, en el archivo del layout html principal, cargar el js principal de la app de vue con la prop type="module" y los módulos que se importen en ese archivo deben ser **.mjs** y no **.js**
 
@@ -450,17 +443,17 @@ En **mi-app.js**:
 ```
 import { miComponenteHeader } from './componentes/mi-componente-header.mjs';
 
-const miApp = Vue.createApp({
+Vue.createApp({
+  components: {
+    'micomponenteheader': miComponenteHeader,
+  },
   data: function() {
     return {
       unaVariableCualquiera: true,
     };
   },
-});
-
-miApp.component('micomponenteheader', miComponenteHeader);
-
-miApp.mount('#contenedor-de-mi-app');
+})
+  .mount('#contenedor-de-mi-app');
 ```
 
 En **componentes/mi-componente-header.mjs**

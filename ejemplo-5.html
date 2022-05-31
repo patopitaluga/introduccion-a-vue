@@ -7,13 +7,12 @@
 
 <script src="https://unpkg.com/vue@3"></script>
 <script>
-  const miApp = Vue.createApp({
+  Vue.createApp({
     data: function() {
       return {
         estaDeshabilitado: false
       };
     },
-  });
-
-  miApp.mount('#contenedor-de-mi-app');
+  })
+    .mount('#contenedor-de-mi-app');
 </script>
