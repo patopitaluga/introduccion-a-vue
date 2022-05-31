@@ -190,7 +190,7 @@ Vivo: https://patopitaluga.github.io/introduccion-a-vue/ejemplo-3.html
 
 ## <a name="events"></a> Escuchando Events
 
-El equivalente en vanilla a .on...
+El equivalente en vanilla a .on... / addEventListener
 
 Se hacen poniendo un @ delante del envento. Tengan en cuenta que dentro de los "" del listener del evento se está ejecutando javascript, así que se pueden leer/escribir variables o correr funciones.
 
@@ -218,9 +218,9 @@ Vivo: https://patopitaluga.github.io/introduccion-a-vue/ejemplo-4.html
 
 ------
 
-## <a name="props"></a> Props dinámicas
+## <a name="attributes"></a> Attributes dinámicos
 
-Dentro de las "" de cualquier prop de un elemento html o componente vue se puede correr javascript. Generalmente se usa para usar variables reactivas de data. En este ejemplo lo uso para setear la propiedad disabled de un &lt;input&gt;
+Dentro de las "" de cualquier attribute de un elemento html o componente vue se puede correr javascript. Generalmente se usa para usar variables reactivas de data. En este ejemplo lo uso para setear el attributo disabled de un &lt;input&gt;
 
 ```html
 <div id="contenedor-de-mi-app">
