@@ -14,7 +14,7 @@ Introducción a Vue
   * [Hello World (render de variables)](#helloworld)
   * [Conditional rendering (v-if)](#conditional-rendering)
   * [List rendering](#list-renderig)
-  * [Events](#events)
+  * [Attributes dinámicos](#attributes)
   * [Props dinámicas en elementos](#props)
   * [Classes / Styles](#classes-y-styles)
   * [v-model](#v-model)
