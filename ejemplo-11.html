@@ -1,0 +1,31 @@
+<!-- Ejemplo 11: On mounted -->
+<div id="contenedor-de-mi-app">
+  <form @submit.prevent="miMetodoDeSubmit">
+    <input type="text">
+    <button type="submit">Enviar</button>
+  </form>
+</div>
+
+<script src="https://unpkg.com/vue@3"></script>
+<script>
+  Vue.createApp({
+    data: function() {
+      return {
+        miVariable: {
+          valor1: 'Hola'
+        },
+      };
+    },
+    mounted: function() {
+      // not really fetching
+      // fetch('https://demo.com')
+      //   .then((res) => {
+      //     this.valor1 = res.json()
+      //   });
+      setTimeout(() => {
+        this.valor1 = res.json()
+    }, 1000);
+    },
+  })
+    .mount('#contenedor-de-mi-app');
+</script>
