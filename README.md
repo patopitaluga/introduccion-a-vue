@@ -155,6 +155,8 @@ Vivo: https://patopitaluga.github.io/introduccion-a-vue/ejemplo-2.html
 
 Dentro del v-if se ejecuta una condición, puede ser una variable, una comparación o una función.
 
+Cuando es **false**, el elemento del v-if no está para nada. No es que está con display none, sino que no está en el DOM directamente.
+
 ------
 
 ## <a name="list-renderig"></a> List Rendering / Cómo hacer loops de array
@@ -382,6 +384,39 @@ Vue.createApp({
 
 Vivo: https://patopitaluga.github.io/introduccion-a-vue/ejemplo-9.html
 
+Es práctico que se use **function** y no arrow functions =&gt; porque así se dispone del this para acceder a las variables de **data**.
+
+```html
+<div id="contenedor-de-mi-app">
+  {{ miSaludo }}
+
+  <button @click="miMetodo('noche')">Es noche</button>
+  <button @click="miMetodo('dia')">Es dia</button>
+</div>
+
+<script src="https://unpkg.com/vue@3"></script>
+<script>
+  Vue.createApp({
+    data: function() {
+      return {
+        miSaludo: 'Hola'
+      };
+    },
+    methods: {
+      miMetodo: function(queMomento) {
+        if (queMomento === 'noche')
+          this.miSaludo = 'buenas noches';
+        if (queMomento === 'dia')
+          this.miSaludo = 'buen dia';
+      },
+    },
+  })
+    .mount('#contenedor-de-mi-app');
+</script>
+```
+
+Vivo: https://patopitaluga.github.io/introduccion-a-vue/ejemplo-10.html
+
 ------
 
 ## <a name="ciclo-de-vida"></a> Ciclo de vida de las apps/componentes de Vue
@@ -413,7 +448,7 @@ Vue.createApp({
 
 Es práctico usar **function** allí y no **() =>** para disponer de todo Vue y de todo el componente con **this**.
 
-Vivo: https://patopitaluga.github.io/introduccion-a-vue/ejemplo-10.html
+Vivo: https://patopitaluga.github.io/introduccion-a-vue/ejemplo-11.html
 
 ------
 
@@ -479,7 +514,7 @@ export { miComponenteHeader };
 
 Si se va a usar con webpack u otro bundler que cree un archivo js único, no es necesario cargarlo con type="module", el resto del js es igual, de modo que es muy fácil pasar de una arquitectura a la otra.
 
-Vivo: https://patopitaluga.github.io/introduccion-a-vue/ejemplo-11/index.html
+Vivo: https://patopitaluga.github.io/introduccion-a-vue/ejemplo-12/index.html
 
 ------
 

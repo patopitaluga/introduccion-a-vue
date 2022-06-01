@@ -1,9 +1,9 @@
-<!-- Ejemplo 10: On mounted -->
+<!-- Ejemplo 10: Method actualizando data -->
 <div id="contenedor-de-mi-app">
-  <form @submit.prevent="miMetodoDeSubmit">
-    <input type="text">
-    <button type="submit">Enviar</button>
-  </form>
+  {{ miSaludo }}
+
+  <button @click="miMetodo('noche')">Es noche</button>
+  <button @click="miMetodo('dia')">Es dia</button>
 </div>
 
 <script src="https://unpkg.com/vue@3"></script>
@@ -11,20 +11,16 @@
   Vue.createApp({
     data: function() {
       return {
-        miVariable: {
-          valor1: 'Hola'
-        },
+        miSaludo: 'Hola'
       };
     },
-    mounted: function() {
-      // not really fetching
-      // fetch('https://demo.com')
-      //   .then((res) => {
-      //     this.valor1 = res.json()
-      //   });
-      setTimeout(() => {
-        this.valor1 = res.json()
-    }, 1000);
+    methods: {
+      miMetodo: function(queMomento) {
+        if (queMomento === 'noche')
+          this.miSaludo = 'buenas noches';
+        if (queMomento === 'dia')
+          this.miSaludo = 'buen dia';
+      },
     },
   })
     .mount('#contenedor-de-mi-app');
