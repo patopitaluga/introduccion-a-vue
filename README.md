@@ -428,21 +428,21 @@ Pueden investigar otros en la documentación de Vue.
 **mounted** es una función que se declara en el objeto que es parámetro de **createApp**
 
 ```javascript
-Vue.createApp({
-  data: function() {
-    return {
-      miVariable: {
-        valor1: 'Hola'
-      },
-    };
-  },
-  mounted: function() {
-    fetch('https://demo.com')
-      .then((res) => {
-        this.valor1 = res.json()
-      });
-  },
-})
+  Vue.createApp({
+    data: function() {
+      return {
+        miVariable: {
+          valor1: 'Hola'
+        }
+      };
+    },
+    mounted: function() {
+      fetch('https://demo.com')
+        .then((res) => {
+          this.valor1 = res.json()
+        });
+    },
+  })
     .mount('#contenedor-de-mi-app');
 ```
 
