@@ -163,8 +163,8 @@ Cuando es **false**, el elemento del v-if no está para nada. No es que está co
 
 ```html
 <div id="contenedor-de-mi-app">
-  <ul v-for="cadaElemento in miLista">
-    <li>{{ cadaElemento.name }}</li>
+  <ul>
+    <li v-for="cadaElemento in miLista">{{ cadaElemento.name }}</li>
   <ul>
 </div>
 
@@ -222,7 +222,7 @@ Vivo: https://patopitaluga.github.io/introduccion-a-vue/ejemplo-4.html
 
 ------
 
-## <a name="attributes"></a> Attributes dinámicos
+## <a name="attributes"></a> Attributes dinámicos / Attribute binding
 
 Dentro de las "" de cualquier attribute de un elemento html o componente vue se puede correr javascript. Generalmente se usa para usar variables reactivas de data. En este ejemplo lo uso para setear el attributo disabled de un &lt;input&gt;
 
