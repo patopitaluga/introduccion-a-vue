@@ -547,17 +547,19 @@ Las props pueden o no ser tipadas. Se recomienda que sí lo sean. Pueden tener u
 
 ## <a name="comunicacion"></a> Insertar información a un componente
 
-La manera más elegante de incorporar información del padre al componente es a través de una prop. Por ejemplo &lt;micomponente :prop-que-necesita="unaVariable"&gt;&lt;/micomponente&gt;
+La manera más elegante de incorporar información del padre al componente es a través de una prop. Por ejemplo &lt;micomponente **:prop-que-necesita="unaVariable"**&gt;&lt;/micomponente&gt;
 
 Otra puede ser a través del #ref de esa instancia del componente pero esto hace a todos los componentes menos independientes. Ejemplo: this.$ref.elnombre.laVariable = 'hola';
 
-Para obtener información del componente hacia el padre se usa $emit
+Para obtener información del componente hacia el padre se usa **$emit**
 
-Otra opción es insertar una función como una prop, similar a React, pero suele ser más confusa, en cambio los events que se emiten siempre son para esto.
+Otra opción es insertar **una función como una prop**, similar a React, pero suele ser más confuso, en cambio **los events que se emiten siempre son para comunicarse con el componente padre**.
 
 https://vuejs.org/guide/components/events.html
 
-Ejemplo: de la misma manera que Vue escuchaba @click en el ejemplo anterior, puede escuchar el emit que haga ese componente: &lt;micomponente @algo="unMethod"&gt;&lt;/micomponente&gt;
+Ejemplo: de la misma manera que Vue escuchaba **@click** en el ejemplo anterior, puede escuchar el emit que haga ese componente: &lt;micomponente @algo="unMethod"&gt;&lt;/micomponente&gt;
+
+Dentro de ese componente puedo tener un evento cualquiera por ejemplo **@click** o dentro de un **method** **$emit('algo')**
 
 ------
 
