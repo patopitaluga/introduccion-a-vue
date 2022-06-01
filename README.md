@@ -528,7 +528,7 @@ const miComponente = {
   <div>
     Hello world {{ miProp }}
   </div>
-`
+`,
   props: {
     miProp: {
       type: Number,
