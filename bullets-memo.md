@@ -5,9 +5,9 @@
 - Shift + ctrl + f (fullscreen)
 
 1
-- Bienvenidos
-- Gracias x estar
-- Feedback apreciado
+[ ] Bienvenidos
+[ ] Gracias x invitarme
+[ ] Feedback apreciado
 ------
 2
 - Para seguir esta charla
