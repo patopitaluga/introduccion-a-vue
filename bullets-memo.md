@@ -62,12 +62,13 @@
 - Los componentes q se hagan de una manera se pasan fácil a la otra
 ------
 9
-- Este es el hello world
 - Nada más que esto, copiandolo y pegandolo en un html ya funciona
 - Obviamente quité todo el head y body. Iría en el body
 - Parte por parte: en html hay un contenedor
 - La mayoría de las veces este contenedor contiene todo lo q hay en el body
 - No siempre
+- La doble llave es el caracter que le indica a Vue que se va a renderear javascript
+- Si lo usan con otro sistema de templates, se puede cambiar para que sea otro
 - Luego se carga Vue entero
 - El tag se debe poner estratégicamente xq es render blocking
 - Si hay contenido afuera se va a mostrar después de los tags script
@@ -81,7 +82,29 @@
 - A veces lo van a ver directamente como objeto, esta es la manera correcta
 - Estas variables no están tipadas. Pero hay maneras de tiparla
 - Por último este objeto creado por createApp tiene una función mount
-
-
-
+------
+10
+------
+11
+------
+12
+- Más fácil que React
+- Se pone la directiva v-if
+- También hay v-else
+- No pone style display: none sino que la quita del DOM
+------
+13
+- Más fácil que React
+- Se pone la directiva v-for con in
+- Igual que React tiene una directiva key
+14
+- Es el equivalente a lo que en js vanilla empieza con on
+- Por ejemplo on click como en este caso
+- También el on change de un select sería @change
+- O el submit de un form sería @submit
+15
+- Cuando queremos que un attributo pueda cambiar y sea reactivo
+- Se pone con :
+- Dentro corre js así que puede ser variable, comparación o función
+- En este ej até si el input está deshab o no a una var
 
