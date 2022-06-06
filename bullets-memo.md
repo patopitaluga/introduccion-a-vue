@@ -78,14 +78,14 @@
 
 ------
 
-7
+## Myths
 - [ ] Vue se puede usar con cualquier otro framework
 - [ ] Incluso con React
 - [ ] Con modelo vista controlador o solo front
 
 ------
 
-8
+## Setup
 - [ ] La manera más fácil de implementar es con un cdn
 - [ ] Esto lo recomienda la docu oficial
 - [ ] X lo gral, en produ no se hace así sino que se usa un bundler
@@ -96,7 +96,7 @@
 
 ------
 
-9
+## Hello world
 - [ ] Nada más que esto, copiandolo y pegandolo en un html ya funciona
 - [ ] Obviamente quité todo el head y body. Iría en el body
 - [ ] Parte por parte: en html hay un contenedor
@@ -120,30 +120,18 @@
 
 ------
 
-10
-
-------
-
-11
-
-------
-
-12
+## Conditional rendering y list rendering
 - [ ] Más fácil que React
 - [ ] Se pone la directiva v-if
 - [ ] También hay v-else
 - [ ] No pone style display: none sino que la quita del DOM
-
-------
-
-13
 - [ ] Más fácil que React
 - [ ] Se pone la directiva v-for con in
 - [ ] Igual que React tiene una directiva key
 
 ------
 
-14
+## @events
 - [ ] Es el equivalente a lo que en js vanilla empieza con on
 - [ ] Por ejemplo on click como en este caso
 - [ ] También el on change de un select sería @change
@@ -151,7 +139,7 @@
 
 ------
 
-15
+## :attribs
 - [ ] Cuando queremos que un attributo pueda cambiar y sea reactivo
 - [ ] Se pone con :
 - [ ] Dentro corre js así que puede ser variable, comparación o función
@@ -159,40 +147,30 @@
 
 ------
 
-16
+## :style y :class
 - [ ] Lo que va a ser que un style sea reactivo es los :
 - [ ] Es un objeto
 - [ ] El casing es el de css a diferencia de React
-
-------
-
-17
 - [ ] Las classes también son un objeto, pero es booleano
 - [ ] Cualquier attrib si está sin : se suma al de :
 
 ------
 
-18
+## v-model
 - [ ] v-model es la directiva más mágica de Vue
 - [ ] si lo piensan bien es una manera corta de usar un :value y un @event
 - [ ] la variable queda atada en las dos direcciones, si cambia la vista
 - [ ] y si cambia la variable
 - [ ] muy útil para formularios
 
-19
-
-------
-
+## methods
 - [ ] Pasamos a las props de config de createApp
 - [ ] Methods
 - [ ] Vimos que los events pueden disparar functiones inlines
 - [ ] Si esas funciones son muy largas, en vez de ponerlas inline, ponemos un method
 - [ ] Se definen en la prop methods (objeto) de createApp
 
-20
-
-------
-
+## acceso a data y otros methods desde method
 - [ ] Como usamos function y no arrow function, disponemos de this. This es nuestra app o componente.
 - [ ] this + la variable definida en data, la actualiza
 - [ ] fijensé como en el ej anterior el método lo puse sin los paréntesis y aquí con
