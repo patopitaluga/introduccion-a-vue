@@ -482,8 +482,9 @@ Pueden investigar otros en la documentación de Vue.
     },
     mounted: function() {
       fetch('https://demo.com')
-        .then((res) => {
-          this.valor1 = res.json()
+        .then(async(res) => {
+          const miObjeto = await res.json();
+          this.valor1 = miObjeto.valor1;
         });
     },
   })
