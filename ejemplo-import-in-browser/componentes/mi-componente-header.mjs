@@ -1,6 +1,6 @@
 const miComponenteHeader = {
   template: `
-  <header>
+  <header class="header">
     Este es el header {{ miVariable }}
   </header>
 `,

@@ -1,9 +1,6 @@
-<!-- Ejemplo 11: On mounted -->
+<!-- Ejemplo 11: Lifecycle "On mounted" -->
 <div id="contenedor-de-mi-app">
-  <form @submit.prevent="miMetodoDeSubmit">
-    <input type="text">
-    <button type="submit">Enviar</button>
-  </form>
+  {{ miVariable.titulo }}
 </div>
 
 <script src="https://unpkg.com/vue@3"></script>
@@ -12,19 +9,21 @@
     data: function() {
       return {
         miVariable: {
-          valor1: 'Hola'
+          titulo: 'Hola',
+          subtitulo: 'Hola',
         },
       };
     },
     mounted: function() {
       // not really fetching
       // fetch('https://demo.com')
-      //   .then((res) => {
-      //     this.valor1 = res.json()
+      //   .then(async (res) => {
+      //     const receivedObject = await res.json();
+      //     this.titulo = receivedObject.titulo;
       //   });
       setTimeout(() => {
-        this.valor1 = res.json()
-    }, 1000);
+        this.titulo = 'Chau';
+      }, 1000);
     },
   })
     .mount('#contenedor-de-mi-app');

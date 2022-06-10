@@ -1,9 +1,8 @@
 <!-- Ejemplo 2: Conditional rendering (v-if) -->
 <div id="contenedor-de-mi-app">
-  <ul v-if="listaVisible">
-    <li>Elemento 1</li>
-    <li>Elemento 2</li>
-  </ul>
+  <p v-if="contenidoDisponible">
+    Hola
+  </p>
 </div>
 
 <script src="https://unpkg.com/vue@3"></script>
@@ -11,7 +10,7 @@
   Vue.createApp({
     data: function() {
       return {
-        listaVisible: true
+        contenidoDisponible: true
       };
     },
   })
