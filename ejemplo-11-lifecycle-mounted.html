@@ -1,6 +1,6 @@
 <!-- Ejemplo 11: Lifecycle "On mounted" -->
 <div id="contenedor-de-mi-app">
-  {{ miVariable.titulo }}
+  {{ miObjeto.titulo }}
 </div>
 
 <script src="https://unpkg.com/vue@3"></script>
@@ -8,7 +8,7 @@
   Vue.createApp({
     data: function() {
       return {
-        miVariable: {
+        miObjeto: {
           titulo: 'Hola',
           subtitulo: 'Hola',
         },
@@ -16,13 +16,13 @@
     },
     mounted: function() {
       // not really fetching
-      // fetch('https://demo.com')
+      // fetch('./')
       //   .then(async (res) => {
       //     const receivedObject = await res.json();
-      //     this.titulo = receivedObject.titulo;
+      //     this.miObjeto.titulo = receivedObject.titulo;
       //   });
       setTimeout(() => {
-        this.titulo = 'Chau';
+        this.miObjeto.titulo = 'Chau';
       }, 1000);
     },
   })

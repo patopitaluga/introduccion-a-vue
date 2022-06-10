@@ -26,6 +26,7 @@ Introducción a Vue
 - Arquitectura de componentes
   * [Componentes](#components)
   * [Definir props](#definir-props)
+  * [Componentes como archivos .vue](#archivos-vue)
   * [Comunicación entre componentes](#comunicacion)
 - Aplicando todo
   * [Ejemplo utilizando lo visto](#ejemplo-completo)
@@ -625,6 +626,39 @@ Allí se declaran en camel case pero al definir el argumento en el html se hará
 &lt;micomponenteheader :mi-prop="unaVariable" &gt; en este caso estoy usando los : porque quiero ingresar el valor que tenga unaVariable como Number, si no hubiera puesto los dos puntos estaría ingresando el string "unaVariable" literalmente.
 
 Las props pueden o no ser tipadas. Se recomienda que sí lo sean. Pueden tener una función customizada que valide el formato. En tu cara typescript.
+
+------
+
+## <a name="archivos-vue"></a> Componentes como archivos .vue
+
+Solo si se buildea con vite / webpack / otro builder.
+
+```html
+<template>
+  <header class="header">
+    Este es el header {{ miVariable }}
+  </header>
+</template>
+
+<script>
+export default {
+  data: function() {
+    return {
+      miVariable: 'hola',
+    };
+  },
+};
+</script>
+
+
+<style lang="scss">
+// Also can use @import './mi-componente-header.scss';
+
+.header {
+  border: 1px #666 solid;
+}
+</style>
+```
 
 ------
 
