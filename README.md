@@ -134,7 +134,7 @@ Todos los ejemplos que veremos aquí funcionan tanto usandolos directamente con 
 
 Esto lo pueden copiar y pegar en un archivo index.html y verlo en un browser y funciona.
 
-Vivo: https://patopitaluga.github.io/introduccion-a-vue/ejemplo-hello-world.html
+Vivo: https://patopitaluga.github.io/introduccion-a-vue/ejemplo-1-hello-world.html
 
 **¿Qué está haciendo?**
 - Crea un elemento de html &lt;div&gt; con el id "contenedor-de-mi-app". Este id puede ser cualquiera, solo se usa para que Vue pueda identificar dónde vivirá la app Vue.
@@ -171,7 +171,7 @@ Vivo: https://patopitaluga.github.io/introduccion-a-vue/ejemplo-hello-world.html
 </script>
 ```
 
-Vivo: https://patopitaluga.github.io/introduccion-a-vue/ejemplo-2-conditiona-rendering.html
+Vivo: https://patopitaluga.github.io/introduccion-a-vue/ejemplo-2-conditional-rendering.html
 
 Dentro del v-if se ejecuta una condición, puede ser una variable, una comparación o una función.
 
