@@ -116,6 +116,7 @@
 - [ ] Data es una función que devuelve un objeto
 - [ ] A veces lo van a ver directamente como objeto, esta es la manera correcta
 - [ ] Estas variables no están tipadas. Pero hay maneras de tiparla
+- [ ] Son un tipo de variable de js que se llama Proxy
 - [ ] Por último este objeto creado por createApp tiene una función mount
 
 ------

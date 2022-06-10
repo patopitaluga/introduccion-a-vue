@@ -11,6 +11,7 @@ Introducción a Vue
   * [Presentación](#intro)
   * [Setup de entorno](#setup)
 - Features de Vue
+  * [Essentials](#essentials)
   * [Hello World (render de variables)](#helloworld)
   * [Conditional rendering (v-if)](#conditional-rendering)
   * [List rendering](#list-renderig)
@@ -18,7 +19,10 @@ Introducción a Vue
   * [Classes / Styles](#classes-y-styles)
   * [v-model](#v-model)
   * [Methods](#methods)
+  * [v-cloak](#vcloak)
   * [Ciclo de vida](#ciclo-de-vida)
+- Composition api
+  * [Setup](#composition-api)
 - Arquitectura de componentes
   * [Componentes](#components)
   * [Definir props](#definir-props)
@@ -27,7 +31,6 @@ Introducción a Vue
   * [Ejemplo utilizando lo visto](#ejemplo-completo)
 - Otros
   * [Webpack](#webpack)
-  * [Trucos](#trucos)
   * [Para seguir aprendiendo](#mas)
 
 ------
@@ -38,8 +41,8 @@ Introducción a Vue
 Un poco de *html*, un poco de *css* y un poco de *javascript*
 
 ### Software necesario:
-- Cualquier IDE (yo voy a usar VSCode)
-- Node puede ser útil
+- Cualquier IDE
+- Node para el ejemplo con bundler
 
 ------
 
@@ -64,7 +67,7 @@ Si React se parece a usar javascript con html adentro, Vue se parece a usar html
 - **vs. React**: Porque no pertenece a Facebook :D además es un poco más sencillo de implementar y toda la lógica de funcionamiento es más (en mi opinión)
 - **vs. Svelte/Otros**: ?
 
-En definitiva: la performance es tan buena o mejor que React (fuente?) el ingreso a Vue es más sencillo, el ecosistema es enorme y es robusto, hay muchísimas librerías de mucha calidad, la documentación y los tutoriales son muy buenos. La comunidad de Vue es súper friendly.
+En definitiva: la performance es tan buena o mejor que React, el ingreso a Vue es más sencillo, el ecosistema es enorme y es robusto, hay muchísimas librerías de mucha calidad, la documentación y los tutoriales son muy buenos. La comunidad de Vue es súper friendly.
 
 ------
 
@@ -87,7 +90,25 @@ Todos los ejemplos que veremos aquí funcionan tanto usandolos directamente con 
 
 ------
 
-### En la escena after credits veremos cómo usarlo con webpack o vue create
+## <a name="essentials"></a> ## Essentials
+
+### Directivas en el html:
+- v-if
+- v-for
+- @events
+- :attributes
+- style/class
+- v-model
+- v-cloak
+
+### Propiedades de createApp:
+#### Options api:
+- props
+- data
+- mounted
+- methods
+#### Composition Api:
+- Setup
 
 ------
 
@@ -113,7 +134,7 @@ Todos los ejemplos que veremos aquí funcionan tanto usandolos directamente con 
 
 Esto lo pueden copiar y pegar en un archivo index.html y verlo en un browser y funciona.
 
-Vivo: https://patopitaluga.github.io/introduccion-a-vue/ejemplo-1.html
+Vivo: https://patopitaluga.github.io/introduccion-a-vue/ejemplo-hello-world.html
 
 **¿Qué está haciendo?**
 - Crea un elemento de html &lt;div&gt; con el id "contenedor-de-mi-app". Este id puede ser cualquiera, solo se usa para que Vue pueda identificar dónde vivirá la app Vue.
@@ -132,10 +153,9 @@ Vivo: https://patopitaluga.github.io/introduccion-a-vue/ejemplo-1.html
 
 ```html
 <div id="contenedor-de-mi-app">
-  <ul v-if="listaVisible">
-    <li>Elemento 1</li>
-    <li>Elemento 2</li>
-  </ul>
+  <p v-if="contenidoDisponible">
+    Hola
+  </p>
 </div>
 
 <script src="https://unpkg.com/vue@3"></script>
@@ -143,7 +163,7 @@ Vivo: https://patopitaluga.github.io/introduccion-a-vue/ejemplo-1.html
   Vue.createApp({
     data: function() {
       return {
-        listaVisible: true
+        contenidoDisponible: true
       };
     },
   })
@@ -151,11 +171,11 @@ Vivo: https://patopitaluga.github.io/introduccion-a-vue/ejemplo-1.html
 </script>
 ```
 
-Vivo: https://patopitaluga.github.io/introduccion-a-vue/ejemplo-2.html
+Vivo: https://patopitaluga.github.io/introduccion-a-vue/ejemplo-2-conditiona-rendering.html
 
 Dentro del v-if se ejecuta una condición, puede ser una variable, una comparación o una función.
 
-Cuando es **false**, el elemento del v-if no está para nada. No es que está con display none, sino que no está en el DOM directamente.
+Cuando es **false**, el elemento del v-if **no está para nada**. No es que está con display none, sino que no está en el DOM directamente.
 
 ------
 
@@ -188,7 +208,9 @@ Cuando es **false**, el elemento del v-if no está para nada. No es que está co
 </script>
 ```
 
-Vivo: https://patopitaluga.github.io/introduccion-a-vue/ejemplo-3.html
+Vivo: https://patopitaluga.github.io/introduccion-a-vue/ejemplo-3-list-rendering.html
+
+Puede traer el índice del loop haciendo (cadaElemento, indice) in miLista
 
 ------
 
@@ -218,7 +240,7 @@ Se hacen poniendo un @ delante del envento. Tengan en cuenta que dentro de los "
 </script>
 ```
 
-Vivo: https://patopitaluga.github.io/introduccion-a-vue/ejemplo-4.html
+Vivo: https://patopitaluga.github.io/introduccion-a-vue/ejemplo-4-events.html
 
 ------
 
@@ -230,7 +252,7 @@ Dentro de las "" de cualquier attribute de un elemento html o componente vue se 
 <div id="contenedor-de-mi-app">
   <input :disabled="estaDeshabilitado"/>
 
-  <button @click="estaDeshabilitado = true">Tocá</button>
+  <button @click="estaDeshabilitado = true">Toca</button>
 </div>
 
 <script src="https://unpkg.com/vue@3"></script>
@@ -246,7 +268,7 @@ Dentro de las "" de cualquier attribute de un elemento html o componente vue se 
 </script>
 ```
 
-Vivo: https://patopitaluga.github.io/introduccion-a-vue/ejemplo-5.html
+Vivo: https://patopitaluga.github.io/introduccion-a-vue/ejemplo-5-attribs.html
 
 ------
 
@@ -276,7 +298,7 @@ Cuando la propiedad **style** de un elemento se escribe con : el contenido debe 
 </script>
 ```
 
-Vivo: https://patopitaluga.github.io/introduccion-a-vue/ejemplo-6.html
+Vivo: https://patopitaluga.github.io/introduccion-a-vue/ejemplo-6-style.html
 
 A dferencia de React, Vue conserva el mismo casing de las propiedades de css.
 
@@ -312,7 +334,7 @@ Si el elemento tiene la propiedad style con y sin :, primero considerará las pr
 </script>
 ```
 
-Vivo: https://patopitaluga.github.io/introduccion-a-vue/ejemplo-7.html
+Vivo: https://patopitaluga.github.io/introduccion-a-vue/ejemplo-7-class.html
 
 ------
 
@@ -342,7 +364,7 @@ v-model es una manera corta de especificar que una variable se insertará siempr
 </script>
 ```
 
-Vivo: https://patopitaluga.github.io/introduccion-a-vue/ejemplo-8.html
+Vivo: https://patopitaluga.github.io/introduccion-a-vue/ejemplo-8-v-model.html
 
 ------
 
@@ -382,7 +404,7 @@ Vue.createApp({
 });
 ```
 
-Vivo: https://patopitaluga.github.io/introduccion-a-vue/ejemplo-9.html
+Vivo: https://patopitaluga.github.io/introduccion-a-vue/ejemplo-9-methods.html
 
 Es práctico que se use **function** y no arrow functions =&gt; porque así se dispone del this para acceder a las variables de **data**.
 
@@ -415,7 +437,29 @@ Es práctico que se use **function** y no arrow functions =&gt; porque así se d
 </script>
 ```
 
-Vivo: https://patopitaluga.github.io/introduccion-a-vue/ejemplo-10.html
+Vivo: https://patopitaluga.github.io/introduccion-a-vue/ejemplo-10-vars-en-methods.html
+
+------
+
+## <a name="vcloak"></a> v-cloak: ocultar el html previo a que cargue Vue
+
+Ya que el html se puede renderear antes de que Vue termine cargar, aunque sea unos milisegundos, pueden mostrarse al usuario los {{  }} con el nombre de la variable. Para evitar eso Vue quitará la propiedad v-cloak al terminar de cargar, esa propiedad se puede usar para ocultar los elementos que muestran contenido reactivo.
+
+En el head
+```html
+<style>
+[v-cloak] {
+  display: none !important
+}
+/* Hide Vue while loading */
+</style>
+```
+En el elemento o componente que se quiere ocultar
+```html
+<div v-cloak>
+  {{ theContentFlashing }}
+</div>
+```
 
 ------
 
@@ -449,6 +493,44 @@ Pueden investigar otros en la documentación de Vue.
 Es práctico usar **function** allí y no **() =>** para disponer de todo Vue y de todo el componente con **this**.
 
 Vivo: https://patopitaluga.github.io/introduccion-a-vue/ejemplo-11.html
+
+------
+
+## <a name="ciclo-de-vida"></a> Setup de composition api
+
+Como alternativa, Vue 3 tiene un esquema similar a los hooks de react. Con el uso de los "essentials" son los mismos conceptos de "data", "methods", "props" y "events" pero seteados en una única prop de createApp que se llama **setup**. En un uso más complejo tiene más opciones. Solucionan el problema de tener muchos componentes que comparten las mismas variables reactivas y funciones porque se pueden importar.
+
+```html
+<div id="contenedor-de-mi-app">
+  <h1>{{ count }}</h1>  <!-- Sin .value -->
+  <button @click="increment">Increment</button>
+</div>
+
+<script src="https://unpkg.com/vue@3"></script>
+<script>
+  Vue.createApp({
+    setup: function() { // setup es una prop nueva
+      const count = Vue.ref(0); // con .ref se declaran las variables reactivas
+
+      // Los métodos ahora son simplemente funciones
+      const increment = () => {
+        count.value++; // se modifican con la prop .value
+      }
+
+      Vue.onMounted(() => {
+        console.log(`The initial count is ${count.value}.`) // en las funciones se leen con .value
+      })
+
+      return {
+        count, // devuelve un objeto con las variables reactivas y los "métodos"
+        increment
+      }
+    }
+  }).mount('#contenedor-de-mi-app');
+</script>
+```
+
+Vivo: https://patopitaluga.github.io/introduccion-a-vue/ejemplo-12-composition-api.html
 
 ------
 
@@ -514,7 +596,7 @@ export { miComponenteHeader };
 
 Si se va a usar con webpack u otro bundler que cree un archivo js único, no es necesario cargarlo con type="module", el resto del js es igual, de modo que es muy fácil pasar de una arquitectura a la otra.
 
-Vivo: https://patopitaluga.github.io/introduccion-a-vue/ejemplo-12/index.html
+Vivo: https://patopitaluga.github.io/introduccion-a-vue/ejemplo-import-in-browser/index.html
 
 ------
 
@@ -565,116 +647,13 @@ Dentro de ese componente puedo tener un evento cualquiera por ejemplo **@click**
 
 ## <a name="ejemplo-completo"></a> Ejemplo live coding utilizando todo lo que vimos
 
-Una webapp con un sidebar desplegable. Si la pantalla es pequeña, el sidebar se plagará. El estado del sidebar se guardará en localstorage. La webapp leerá de una api el estado del clima y mostrará un emoji si va a llover y otro si estará soleado. Tendrá un widget para suscribirte a un newsletter.
+Aquí improvisaremos 🙏.
 
 ------
 
 ## <a name="webpack"></a> Build con webpack
 
-Archivo webpack.config.js
-
-```javascript
-require('dotenv').config();
-const webpack = require('webpack');
-
-/**
- * Webpack configuration file. Will be imported when running "npm run build" / "npm run webpack"
- * and when running server in development mode with "npm run dev".
- */
-
-const path = require('path');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-
-const { VueLoaderPlugin } = require('vue-loader');
-
-module.exports = {
-  mode: ((process.env.NODE_ENV && process.env.NODE_ENV === 'development') ? 'development' : 'production'), /* Documentation: https://webpack.js.org/concepts/mode/ */
-  entry: {
-    'script': './src/src-script.js',
-
-    'style': './src/style.scss',
-  },
-  output: {
-    path: path.resolve(__dirname, 'public/dist'),
-    filename: '[name].js',
-    publicPath: '/dist/'
-  },
-  resolve: {
-    extensions: ['.js', '.css', '.scss'],
-    alias: {
-      vue: 'vue/dist/vue.esm-bundler.js',
-      // vue: 'vue/dist/vue.runtime.esm-bundler.js',
-      // vue: 'vue/dist/vue.runtime.esm-browser.js',
-    },
-  },
-  devtool: 'source-map',
-  target: 'web', /* Documentation: https://webpack.js.org/configuration/target/ */
-  module: {
-    rules: [
-      {
-        test: /\.scss$/,
-        use: ['vue-style-loader', 'css-loader', 'sass-loader'],
-        include: [/components/]
-      },
-      {
-        test: /\.scss$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          'css-loader',
-          'sass-loader'
-        ],
-        exclude: [/components/]
-      },
-      {
-        test: /\.css$/,
-        use: ['vue-style-loader', 'css-loader']
-      },
-      {
-        test: /\.tsx?$/,
-        loader: 'ts-loader',
-        options: {
-          appendTsSuffixTo: [/\.vue$/],
-        },
-        exclude: /node_modules/,
-      },
-      {
-        test: /\.vue$/,
-        loader: 'vue-loader',
-      },
-    ],
-  },
-  plugins: [
-    new MiniCssExtractPlugin(),
-    new VueLoaderPlugin(),
-    new webpack.DefinePlugin({
-      __VUE_OPTIONS_API__: false,
-      __VUE_PROD_DEVTOOLS__: false,
-    }),
-  ],
-};
-```
-
-------
-
-## <a name="trucos"></a> Un trick útil: ocultar el html previo a que cargue Vue
-
-Ya que el html se puede renderear antes de que Vue termine cargar, aunque sea unos milisegundos, pueden mostrarse al usuario los {{  }} con el nombre de la variable. Para evitar eso Vue quitará la propiedad v-cloak al terminar de cargar, esa propiedad se puede usar para ocultar los elementos que muestran contenido reactivo.
-
-En el head
-```html
-<style>
-[v-cloak] {
-  display: none !important
-}
-/* Hide Vue while loading */
-</style>
-```
-En el elemento o componente que se quiere ocultar
-```html
-<div v-cloak>
-  {{ theContentFlashing }}
-</div>
-```
+Ejemplo en: https://github.com/patopitaluga/introduccion-a-vue/tree/master/ejemplo-build-con-webpack
 
 ------
 
@@ -684,13 +663,15 @@ En el elemento o componente que se quiere ocultar
 
 - computed
 - filters
+- &lt;slot&gt;
 - ciclo de vida de la app
+- composition api
 
 ### Otras tecnologías del ecosistema Vue a investigar:
 
 Librerías del ecosistema Vue
 
 - vue-router
-- Vuex: is a state management pattern + library for Vue.js applications. Equivalente a
+- Vuex / Pinia: equivalente a redux
 - Nuxt: equivalente a Next
 - Vuetify: librería de componentes Vue

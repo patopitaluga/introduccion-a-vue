@@ -1,0 +1,28 @@
+<!-- Ejemplo 12: Composition api -->
+<div id="contenedor-de-mi-app">
+  <h1>{{ count }}</h1>
+  <button @click="increment">Increment</button>
+</div>
+
+<script src="https://unpkg.com/vue@3"></script>
+<script>
+  Vue.createApp({
+    setup: function() { // setup es una prop nueva
+      const count = Vue.ref(0); // con .ref se declaran las variables reactivas
+
+      // Los métodos ahora son simplemente funciones
+      const increment = () => {
+        count.value++
+      }
+
+      Vue.onMounted(() => {
+        console.log(`The initial count is ${count.value}.`)
+      })
+
+      return {
+        count, // devuelve las variables reactivas y los métodos
+        increment
+      };
+    },
+  }).mount('#contenedor-de-mi-app');
+</script>
