@@ -493,7 +493,7 @@ Pueden investigar otros en la documentación de Vue.
 
 Es práctico usar **function** allí y no **() =>** para disponer de todo Vue y de todo el componente con **this**.
 
-Vivo: https://patopitaluga.github.io/introduccion-a-vue/ejemplo-11.html
+Vivo: https://patopitaluga.github.io/introduccion-a-vue/ejemplo-11-lifecycle-mounted.html
 
 ------
 
