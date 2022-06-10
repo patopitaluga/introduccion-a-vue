@@ -90,7 +90,7 @@ Todos los ejemplos que veremos aquí funcionan tanto usandolos directamente con 
 
 ------
 
-## <a name="essentials"></a> ## Essentials
+## <a name="essentials"></a> Essentials
 
 ### Directivas en el html:
 - v-if
